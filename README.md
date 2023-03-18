@@ -2,9 +2,9 @@
 
 ## Members
 
-1. Kusmanova Alima
-2. Toleugaliyev Nurdaulet
-3. Seidakhmetova Amina
+  1. Kusmanova Alima
+  2. Toleugaliyev Nurdaulet
+  3. Seidakhmetova Amina
 
 
 
