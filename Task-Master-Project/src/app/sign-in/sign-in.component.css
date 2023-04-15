@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.photo-side{
+    display: flex;
+    width: 56%;
+    height: 100%;
+
+}
+
+.sign-in-side{
+    display: flex;
+    width: 44%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-bar{
+    display: flex;
+    /* width: ; */
+}
