@@ -1,0 +1,154 @@
+
+.toolbar h1 {
+    position: absolute;
+    left: 80px;
+    top: 30px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+}
+/* .toolbar img{
+    height: 20px;
+    width: 20px;
+} */
+
+.all-habits {
+    text-align: center;
+    /* position: absolute; */
+    margin-top: 150px;
+}
+
+.all-habits h1 {
+    
+    margin-left: -100px;
+    top: 115px;
+    font-weight: 500;
+    font-size: 25px;
+    display: inline-block;
+}
+
+.all-habits mat-card {
+    width: 80%;
+    margin: 1em auto;
+    text-align: left;
+}
+
+.habit-icon {
+    vertical-align: middle;
+    padding-bottom: 3px;
+    font-weight: 600;
+}
+
+.detail-label {
+    font-weight: 500;
+}
+
+.detail-options {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+}
+
+.detail-options mat-icon {
+    padding-right: 5px;
+}
+
+button:hover,
+.detail-options {
+    cursor: pointer;
+}
+.button1{
+    background-color: #CE8CF0;
+    font-size: xx-large;
+    font-weight: 900;
+    text-align: center;
+    width: 50px;
+    height: 50px; 
+    border-radius: 30%;
+    border-color: rgb(255, 255, 255);
+    display: inline-block;
+    margin-left: 10px;
+    transform: scale(0.5);
+}  
+.add-form-container {
+    padding: 4em;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+  
+}
+
+.add-form-container mat-card-title {
+    margin: 1em !important;
+   
+}
+
+.add-form-container button {
+    margin-top: 10px !important;
+}
+
+mat-card-content {
+    margin-bottom: 0;
+}
+
+form {
+    padding-top: 1em;
+}
+
+mat-form-field {
+    width: 90%;
+}
+
+button {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 1em;
+}
+
+button:hover,
+.detail-options {
+    cursor: pointer;
+}
+.img{
+    height: 30px;
+    width: 30px;
+}
+.habit-icon{
+    color: #CE8CF0;
+}
+.habit-icon4{
+    color: rgb(59, 189, 59);
+}
+.habit-icon3{
+    color: rgb(220, 36, 36);
+}
+mat-card-actions{
+    transform: scale(1);
+    font-weight: 800;
+    border: none;
+  
+}
+.button2, .button3{
+    
+    background-color: rgb(247, 244, 244);
+    font-weight: 800;
+    border-style:double;
+    border-color: black;
+    border-width: 1px;
+  
+}
+.image{
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    top: 25px;
+    left: 25px;
+}
+
+.bg-green {
+    color: green;
+}
+
+.bg-red {
+    color: red;
+}

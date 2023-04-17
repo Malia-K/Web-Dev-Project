@@ -1,0 +1,67 @@
+<div class="toolbar">
+   
+    <img  class="image" src="assets/habit.png" alt="Описание изображения" width="200" height="150">
+
+    <h1>Habit Tracker</h1>
+
+</div>
+<div class="add-form-container" *ngIf="adding || editing">
+    <mat-card>
+        <mat-card-title>Add New Habit </mat-card-title>
+        <hr />
+        <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="name" />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                    <mat-label>Frequency</mat-label>
+                    <mat-select formControlName="frequency">
+                        <mat-option value="Daily">Daily</mat-option>
+                        <mat-option value="Weekly">Weekly</mat-option>
+                        <mat-option value="Monthly">Monthly</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" placeholder="Why is this habit important to you? "></textarea>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button  class="button2" type="submit">Save</button>
+                <button class="button3" (click)="exitForm()">Cancel</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
+<div class="all-habits" *ngIf="!adding && !editing">
+    <h1>All Habits</h1>
+    <button class="button1" (click)="adding=!adding">
+    +
+  </button>
+    <div *ngFor="let habit of habits; let i = index;">
+        <mat-card>
+            <mat-card-title>
+                <mat-icon class="habit-icon">check_coircle_outline</mat-icon>
+                {{ habit.name }}
+            </mat-card-title>
+            <div class="detail-options">
+                <mat-icon class="habit-icon2" color="primary" (click)="setEditForm(habit, i)">edit</mat-icon>
+                <mat-icon class=" habit-icon3"  (click)="onDelete(i)">remove_circle</mat-icon>
+                <mat-icon (click)="onClick(habit)" [ngClass]=" habit.isDone === true ? 'bg-green' : 'bg-red' ">check_circle</mat-icon>
+            </div>
+            <mat-card-content>
+                <p>
+                    <span class="detail-label">Frequency:</span> {{ habit.frequency }}
+                </p>
+                <p>
+                    <span class="detail-label">Why is this habit important to me?</span>
+                    <br />{{ habit.description }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
