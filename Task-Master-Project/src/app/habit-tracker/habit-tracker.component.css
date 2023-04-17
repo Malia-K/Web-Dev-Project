@@ -6,6 +6,7 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 38px;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 /* .toolbar img{
     height: 20px;
@@ -25,6 +26,7 @@
     font-weight: 500;
     font-size: 25px;
     display: inline-block;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 .all-habits mat-card {
@@ -37,10 +39,14 @@
     vertical-align: middle;
     padding-bottom: 3px;
     font-weight: 600;
+ 
 }
 
 .detail-label {
     font-weight: 500;
+  
+    /* font-size: large; */
+
 }
 
 .detail-options {
@@ -114,7 +120,7 @@ button:hover,
     width: 30px;
 }
 .habit-icon{
-    color: #CE8CF0;
+    color: #6e08a0;
 }
 .habit-icon4{
     color: rgb(59, 189, 59);
@@ -151,4 +157,13 @@ mat-card-actions{
 
 .bg-red {
     color: red;
+}
+mat-card{
+    background-color:#CE8CF0;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+mat-card-title{
+    font-weight: 600;
 }
