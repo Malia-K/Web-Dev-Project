@@ -1,21 +1,49 @@
 <div class="container">
 
-    <div class="photo-side">
-        <img src="/assets/welcome-page-background.jpg" alt = "background" width="100%" style="    filter: brightness(65%);">
+    <div class="content-side">
+        <img src ="/assets/logo-white.png" alt = "logo" width="45%" >
+        <div class="text">
+            <h2>Welcome!<br>To our website.</h2>
+
+            <div class="social-media">
+                <a href="https://github.com/Malia-K/Web-Dev-Project.git">
+                    <img src="assets/github-sign.png" alt = "github" width="7%">
+                    <p>Github</p>
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class= "sign-in-side">
-        <img src ="/assets/logo.png" alt = "logo" width="50%" >
-        
-        <div class = "input-bar">
-            <img src = "/assets/user.png" alt = "user" height="50%">
-            <input type="email" placeholder="Email">
+        <div class="form-box">
+            <h2>Sign In</h2>
+
+            <div class = "input-box">
+                <span class="icon">
+                    <img src = "/assets/email.png" alt = "user" height="25px">
+                </span>
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class = "input-box">
+                <span class="icon">
+                    <img src = "/assets/password.png" alt = "user" height="25px">
+                </span>
+                <input type = "password"required>
+                <label>Password</label>
+            </div>
+            
+            
+            <button type="submit" class = "login-button">Log In</button>
+
+            <div class="login-register">
+                <p>Don't have an account? 
+                    <a href = "#" class="reister-link"> Sign up </a>
+                </p>
+            </div>
         </div>
         
-        <input type = "password" placeholder="Password">
-
-
-        <button type="button" id = "login-button">Log In</button>
     </div>
 
 

@@ -7,9 +7,9 @@ import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from '../event-utils';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-planner',
+  templateUrl: './planner.component.html',
+  styleUrls: ['./planner.component.css']
 })
 export class PlannerComponent {
   calendarVisible = true;
