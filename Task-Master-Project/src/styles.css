@@ -10,3 +10,7 @@ body{
 app-sign-in{
     overflow-y: hidden ;
 }
+
+app-habit-tracker{
+    position: relative;
+}

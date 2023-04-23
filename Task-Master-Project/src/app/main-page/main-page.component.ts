@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
+  innerComponent : string = "";
 
+  changePage(selectedPage:string){
+    this.innerComponent = selectedPage;
+  }
 }

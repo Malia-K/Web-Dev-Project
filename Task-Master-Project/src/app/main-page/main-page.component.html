@@ -8,15 +8,27 @@
         <div class = "workspace">
             <p id = "workspace-text">WORKSPACE</p>
 
-            <button class="tablinks" >TO-DO</button>
-            <button class="tablinks" >PLANNER</button>
-            <button class="tablinks"  >HABIT TRACKER</button>
+            <button class="tablinks" (click)="changePage('todo')">TO-DO</button>
+            <button class="tablinks" (click)="changePage('planner')">PLANNER</button>
+            <button class="tablinks" (click)="changePage('habit-tracker')" >HABIT TRACKER</button>
             <!-- <button class="tablinks"  >INCOME / OUTCOME</button> -->
         </div>
     </div>
 
-    <div class="content-side">
-        <!-- <app-planner></app-planner> -->
+    <div class="content-side" [ngSwitch] = "innerComponent">
+        <div *ngSwitchCase="'todo'">
+            <app-to-do></app-to-do>
+        </div>
+        <div *ngSwitchCase="'planner'">
+            <app-planner></app-planner>
+        </div>
+        <div *ngSwitchCase="'habit-tracker'">
+            <app-habit-tracker></app-habit-tracker>
+        </div>
+        <div *ngSwitchDefault>
+            <app-to-do></app-to-do>
+        </div>
+        
     </div>
 
 </div>
