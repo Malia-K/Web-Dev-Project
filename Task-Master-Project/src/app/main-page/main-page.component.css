@@ -41,12 +41,12 @@
 
 
 .tablinks:hover {
-    background-color: rgba(210, 176, 238, 28);
+    background: rgba(210, 176, 238, 28);
 }
 
 
-.tablinks.active {
-    background-color:rgba(206, 140, 240, 28);
+.tablinks:focus {
+    background: rgba(206, 140, 240, 28);
 }
 
 
