@@ -64,7 +64,7 @@ button:hover,
     cursor: pointer;
 }
 .button1{
-    background-color: #CE8CF0;
+    background-color:#E0D6FF;
     font-size: xx-large;
     font-weight: 900;
     text-align: center;
@@ -159,7 +159,7 @@ mat-card-actions{
     color: red;
 }
 mat-card{
-    background-color:#CE8CF0;
+    background-color:#E0D6FF;
     border: 2px solid black;
     border-radius: 10px;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;

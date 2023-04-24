@@ -5,6 +5,7 @@ body{
     padding: 0;
     width: 100%;
     height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 app-sign-in{
@@ -12,5 +13,11 @@ app-sign-in{
 }
 
 app-habit-tracker{
+    position: relative;
+}
+
+app-to-do{
+    width: 100%;
+    height: 100%;
     position: relative;
 }
