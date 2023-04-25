@@ -77,10 +77,14 @@ button:hover,
     transform: scale(0.5);
 }  
 .add-form-container {
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: center;
     padding: 4em;
     text-align: center;
     max-width: 400px;
-    margin: auto;
+    /* margin: auto; */
   
 }
 
@@ -94,6 +98,10 @@ button:hover,
 }
 
 mat-card-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 0;
     margin-bottom: 0;
 }
 
@@ -103,6 +111,7 @@ form {
 
 mat-form-field {
     width: 90%;
+    height: 50px;
 }
 
 button {
@@ -159,6 +168,7 @@ mat-card-actions{
     color: red;
 }
 mat-card{
+    display: flex;
     background-color:#E0D6FF;
     border: 2px solid black;
     border-radius: 10px;
@@ -167,3 +177,12 @@ mat-card{
 mat-card-title{
     font-weight: 600;
 }
+
+
+/* 
+mat-select{
+    margin-left: 50%;
+    margin-top: 50%;
+} */
+
+
