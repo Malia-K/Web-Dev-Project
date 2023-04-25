@@ -48,7 +48,7 @@ export class HabitTrackerComponent {
       isDone: false,
       description:
         'This habit makes my kitchen look nice and makes my day better the next morning.',
-
+      likes: 0,
     },
     <Habit>{
       name: 'Weed the Garden',
@@ -56,6 +56,7 @@ export class HabitTrackerComponent {
       isDone: false,
       description:
         'The weeds get so out of hand if they wait any longer, and I like how nice our home looks with a clean lawn.',
+      likes: 0,
     },
 
   ];
@@ -90,6 +91,11 @@ export class HabitTrackerComponent {
     console.log(this.habits)
     // this.bgColor = habit.isDone ? 'green' : 'rgb(220, 36, 36)';
   }
+ 
+  incrementLikes(habit: Habit) {
+    habit.likes++;
+  }
+
 
   
 

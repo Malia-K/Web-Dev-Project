@@ -53,6 +53,11 @@
                 <mat-icon class=" habit-icon3"  (click)="onDelete(i)">remove_circle</mat-icon>
                 <mat-icon (click)="onClick(habit)" [ngClass]=" habit.isDone === true ? 'bg-green' : 'bg-red' ">check_circle</mat-icon>
             </div>
+            <div class="likes">
+                {{habit.likes}}
+                <p class="aaa" (click)="incrementLikes(habit)" >+</p>
+                
+            </div>
             <mat-card-content>
                 <p>
                     <span class="detail-label">Frequency:</span> {{ habit.frequency }}

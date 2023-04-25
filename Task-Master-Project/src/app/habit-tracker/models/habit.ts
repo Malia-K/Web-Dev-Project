@@ -3,4 +3,5 @@ export class Habit {
     frequency!: string;
     description!: string;
     isDone!: boolean;
+    likes!: number;
 }
