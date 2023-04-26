@@ -24,6 +24,7 @@ export class HabitTrackerComponent {
     name: new FormControl(''),
     frequency: new FormControl(''),
     description: new FormControl(''),
+    likes: new FormControl(0)
   });
 
   public onSubmit() {
@@ -85,15 +86,15 @@ export class HabitTrackerComponent {
   increment(){
     this.counter++;
   }
-  // public bgColor = 'rgb(220, 36, 36)';
+  
   onClick(habit: Habit) {
     habit.isDone = !habit.isDone
     console.log(this.habits)
     // this.bgColor = habit.isDone ? 'green' : 'rgb(220, 36, 36)';
   }
- 
+
   incrementLikes(habit: Habit) {
-    habit.likes++;
+    habit.likes ++;
   }
 
 

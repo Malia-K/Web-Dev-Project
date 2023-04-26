@@ -5,44 +5,46 @@
     <h1>Habit Tracker</h1>
 
 </div>
-<div class="add-form-container" *ngIf="adding || editing">
-    <mat-card>
-        <mat-card-title>Add New Habit </mat-card-title>
+<mat-card class="add-form-container" *ngIf="adding || editing">
+    <div>
+        <h1>Add New Habit </h1>
         <hr />
         <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
-            <mat-card-content>
-                <mat-form-field appearance="fill">
-                    <mat-label>Title</mat-label>
+            <div>
+                <div appearance="fill">
+                    <label>Title</label><br>
                     <input matInput formControlName="name" />
-                </mat-form-field>
+                </div>
+                <div appearance="fill">
+                    <label>Frequency</label><br>
+                    <select formControlName="frequency">
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
                 <br />
-                <mat-form-field appearance="fill">
-                    <mat-label>Frequency</mat-label>
-                    <mat-select formControlName="frequency">
-                        <mat-option value="Daily">Daily</mat-option>
-                        <mat-option value="Weekly">Weekly</mat-option>
-                        <mat-option value="Monthly">Monthly</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br />
-                <mat-form-field appearance="fill">
-                    <mat-label>Description</mat-label>
+                <div appearance="fill">
+                    <label>Description</label><br>
                     <textarea matInput formControlName="description" placeholder="Why is this habit important to you? "></textarea>
-                </mat-form-field>
-            </mat-card-content>
+                </div>
+            </div>
             <mat-card-actions>
                 <button  class="button2" type="submit">Save</button>
                 <button class="button3" (click)="exitForm()">Cancel</button>
             </mat-card-actions>
         </form>
-    </mat-card>
-</div>
+    </div>
+</mat-card>
 <div class="all-habits" *ngIf="!adding && !editing">
+    <div class="tittle">
     <h1>All Habits</h1>
-    <button class="button1" (click)="adding=!adding">
+    <button class="plus" (click)="adding=!adding">
     +
-  </button>
+    </button>
+    </div>
     <div *ngFor="let habit of habits; let i = index;">
+        <div class="mat-card-content">
         <mat-card>
             <mat-card-title>
                 <mat-icon class="habit-icon">check_coircle_outline</mat-icon>
@@ -68,5 +70,6 @@
                 </p>
             </mat-card-content>
         </mat-card>
+        </div>
     </div>
 </div>
