@@ -18,19 +18,21 @@
 
 
 <div class="todo-content">
-    <ul class = "categories">
-        <li *ngFor = "let category of categories" class="category">
+    <div class = "categories">
+        <div *ngFor = "let category of categories" id="category">
             <p class = "category-title">
                 {{category.title}}
                 <img src = "assets/plus -black.png" height="60%">
             </p>
-            <div *ngFor = "let todo of cat_todos">
-                <p class="todo-block">
-                    {{todo.description}}
-                </p>
+            <div *ngFor = "let todo of todos">
+                <div *ngIf = "todo.category == category.id" class="todo-block">
+                    <p>
+                        {{todo.description}}
+                    </p>
+                </div>
             </div>
-        </li>
+        </div>
         
-    </ul>
+    </div>
 </div>
 
