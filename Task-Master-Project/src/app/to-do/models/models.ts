@@ -1,11 +1,20 @@
-export interface Category{
-    id: number;
-    title: string;
+export class Category{
+    constructor(
+        public id: number,
+        public title: string,
+        ){}
 }
 
-export interface Todo{
-    id: number;
-    description: string;
-    completed: boolean;
-    category: number;
+export class Todo{
+    constructor(
+        public id: number,
+        public description: string,
+        public completed: boolean,
+        public category: number){
+            this.id = id;
+            this.description = description;
+            this.completed = completed;
+            this.category = category
+        }
+    
 }

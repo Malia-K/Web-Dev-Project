@@ -39,6 +39,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 25px;
+    cursor: pointer;
 
 }
 
@@ -60,8 +61,8 @@
 
     /* height: 100%; */
 }
-#category{
-    display: inline-flex;
+.category{
+    display: flex;
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
@@ -72,7 +73,7 @@
     min-width: 280px;
     max-width: 280px;
     min-height: 150px;
-    height: auto;
+    height: 100%;
     /* border: 1px solid black; */
     margin-right:20px ;
     filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
@@ -88,9 +89,9 @@
     flex-direction: row;
     min-width: 230px;
     max-width: 230px;
-    max-height: 30px;
+    height: 30px;
     /* height: auto; */
-    align-items: center;
+    align-content: center;
     justify-content: space-between;
     background-color: white;
     border-radius: 8px;
@@ -99,6 +100,19 @@
     color: black;
     font-size: 14px;
     font-weight: 570;
+    /* flex-wrap: wrap; */
+
+    margin:10px 0px 10px 0px;
+
+}
+
+.category-title p{
+    align-self: center;
+}
+
+.delete-category{
+    border: none;
+    background-color: transparent;
 
 }
 
@@ -112,13 +126,53 @@
     /* justify-content: space-between; */
     background-color: white;
     border-radius: 8px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3%;
+    padding-right: 7%;
+    padding-top: 8px;
+    padding-bottom: 8px;
     color: black;
     font-size: 14px;
     font-weight: 450;
     margin-bottom: 5px;
     margin-left: 0;
+
+}
+
+
+.todo-input{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    /* justify-content: center; */
+    width: 230px;
+    height: 25px;
+    margin-bottom: 15px;
+    
+}
+
+
+.todo-input input{
+    border-radius: 8px;
+    border: none;
+    min-width: 225px;
+    padding-left: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+
+}
+
+
+.todos-list{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 10px; */
+    height: auto;
+}
+.todo-desc{
+    display: flex;
+    flex-wrap: wrap;
+    width: 190px;
+    margin-left: 5px;
 
 }
 
@@ -132,4 +186,27 @@ li{
 ul{
     list-style: none;
 
+}
+
+.add-todo{
+    background-color: transparent;
+    border:none;
+    height: 30px;
+    cursor: pointer;
+    /* position: relative; */
+}
+
+.check-box{
+    height: 20px;
+    margin-left: 0;
+    padding: 0;
+}
+
+.remove-todo{
+    /* display: flex; */
+    background-color: transparent;
+    border: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
 }
