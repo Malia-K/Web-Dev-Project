@@ -17,7 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToDoComponent } from './to-do/to-do.component';
-
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { ToDoComponent } from './to-do/to-do.component';
     HabitTrackerComponent,
     PlannerComponent,
     ToDoComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -42,9 +44,12 @@ import { ToDoComponent } from './to-do/to-do.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    HttpClientModule,
+    MatDialogModule,
+    CommonModule,
   ],
-  providers: [],
+  providers: [MatDialogRef],
   bootstrap: [AppComponent],
   exports : [PlannerComponent]
 })

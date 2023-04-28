@@ -11,11 +11,11 @@ export class AuthService {
   constructor(private client: HttpClient) { }
 
   signIn(username: string, password: string): Observable<AuthToken> {
-    return this.client.post<AuthToken>('${this.BASE_URL}/sign-in/', {username, password});
+    return this.client.post<AuthToken>(`${this.BASE_URL}/api/sign-in/`, {username, password});
   }
   signUp(username: string, email: string, password: string, firstName: string, lastName: string):
     Observable<SignUpToken> {
-    return this.client.post<SignUpToken>('${this.BASE_URL}/sign-up/', {username, email, password, firstName, lastName});
+    return this.client.post<SignUpToken>(`${this.BASE_URL}/api/sign-up/`, {username, email, password, firstName, lastName});
   }
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
