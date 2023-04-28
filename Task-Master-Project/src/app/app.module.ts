@@ -49,7 +49,7 @@ import { CommonModule } from '@angular/common';
     MatDialogModule,
     CommonModule,
   ],
-  providers: [MatDialogRef],
+  providers: [],
   bootstrap: [AppComponent],
   exports : [PlannerComponent]
 })
