@@ -48,6 +48,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     MatDialogModule,
     CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

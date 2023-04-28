@@ -7,11 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
-  providers: [
-    {provide: MatDialogRef, useValue: {}},
-    {provide: MAT_DIALOG_DATA, useValue: {}}
 
-  ]
+  providers: [{ provide: MatDialogRef, useValue: {} },{ provide: MAT_DIALOG_DATA, useValue: {} }]
+
 })
 export class SignInComponent {
   @Output() validLogin = new EventEmitter<{isLoggedIn: boolean, username: string, password: string}>();
