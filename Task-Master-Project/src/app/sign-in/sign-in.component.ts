@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -15,8 +15,8 @@ export class SignInComponent {
   username: string;
   password: string;
 
-  constructor(private signInService: AuthService,
-               public data: any) {
+  constructor(private signInService: AuthService, public dialogRef: MatDialogRef<SignInComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.isLoggedIn = data.isLoggedIn;
     this.username = data.username;
     this.password = data.password;
@@ -42,11 +42,11 @@ export class SignInComponent {
         this.password = this.signInForm.value.password;
         this.signIn();
       }
-      // this.dialogRef.close(this.signInForm.value);
+      this.dialogRef.close(this.signInForm.value);
     }
   }
 
-  // onCancel(): void {
-  //   this.dialogRef.close();
-  // }
+  onCancel(): void {
+    this.dialogRef.close();
+  }
 }
