@@ -210,3 +210,60 @@ ul{
     height: 28px;
     cursor: pointer;
 }
+
+
+.adding-category{
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+
+.adding-category input{
+    border-radius: 8px;
+    border: 0.5px solid rgb(232, 170, 255);
+    /* min-width: 225px; */
+    height: 30px;
+
+    /* padding-left: 8px; */
+    background-color: rgba(224, 214, 255, 0.25);
+    font-size: 16px;
+
+    
+}   
+
+.cat-btn{
+    display: flex;
+    flex-direction: row;
+    margin-top: 8px;
+}
+
+.buttonSave{
+    display: flex;
+    background-color: #541CAB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.buttonCancel{
+    display: flex;
+    background-color: white;
+    color: #541CAB;
+    border: 2px solid #541CAB;
+    border-radius: 8px;
+    height: 30px;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

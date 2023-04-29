@@ -3,6 +3,17 @@ body{
     padding: 0;
 }
 
+
+/* .mdc-text-field{
+    overflow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mat-mdc-form-field-bottom-align::before{
+    display: block;
+} */
+
 .container{
     /* display: flex;
     flex-direction: row; */
@@ -118,7 +129,7 @@ from {
     position: relative;
     width: 65%;
     height: 50px;
-    border-bottom:  2px solid white;
+    /* border-bottom:  2px solid white; */
     margin: 30px 0;
 }
 
@@ -132,7 +143,12 @@ from {
     color: white;
     font-size: 16px;
     padding-right: 58px;
+    
 
+}
+
+.input-box input::placeholder{
+    color:rgb(214, 214, 214);
 }
 
 .input-box label{
@@ -152,9 +168,13 @@ from {
     top:-5px;
 }
 
+
+
+
+
 .input-box .icon{
     position: absolute;
-    top: 13px;
+    top: 1px;
     right: 0;
 }
 
@@ -174,6 +194,10 @@ from {
     margin-bottom: 20px;
 }
 
+.mat-button.mat-success {
+    color: black;
+}
+
 
 .login-register a{
     color: white;
@@ -184,4 +208,7 @@ from {
 .login-register a:hover{
     text-decoration: underline;
 }
+
+
+
 

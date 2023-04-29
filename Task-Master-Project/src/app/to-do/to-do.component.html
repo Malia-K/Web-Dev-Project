@@ -9,11 +9,20 @@
 
 
 
-    <button type="submit" class = "add-category-btn">
+    <button type="submit" class = "add-category-btn" (click) = "addCategory()">
         New 
         <span> <img src = "assets/plus-white.png" width="40%" style="margin-top:8px"> </span>
     </button> 
 
+</div>
+
+<div *ngIf = "adding === true" class = "adding-category">
+    <input type = "text" placeholder="New Category" #inputCategory name="inputCategory"/>
+    <div class="cat-btn">
+        <button  class="buttonSave" type="submit" (click) = "saveCategory(inputCategory.value); inputCategory.value = ''">Save</button>
+        <button class="buttonCancel" (click)="exitForm()">Cancel</button>
+    </div>
+    
 </div>
 
 
@@ -25,13 +34,13 @@
                     
                     <p>{{category.title}}</p>
                     
-                    <button class = "delete-category"> <img src = "assets/trash-can.png" height="60%"></button>
+                    <button class = "delete-category" (click) = "deleteCategory(category.id)"> <img src = "assets/trash-can.png" height="60%"></button>
                 </div>
                 
 
                 <form class="todo-input">
                     <input type = "text" class= "todo-input" placeholder="Add Todo" #inputTodo name="inputTodo">
-                    <!--  [(ngModel)] = "inputData"  -->
+                   
                     <button class = "add-todo" (click) = "addTodo(category.id, inputTodo.value); inputTodo.value = ''"> <img src = "assets/plus -black.png" height="60%"></button>  
                 </form>
 
@@ -41,46 +50,15 @@
                         <div class="todo-desc">
                             {{todo.description}}
                         </div>
-                        <button class="remove-todo" (click) = "updateTodo(todo.id)" >
+                        <!-- <button class="remove-todo" (click) = "updateTodo(todo.id)" >
                             <img src="assets/edit.png" alt="edit-button" width="100%">
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             <!-- </div> -->
         </div>
         
     </div>
-
-    <!-- <mat-card class="add-form-container" *ngIf="adding || editing">
-        <div>
-            <h1>Add New Habit </h1>
-            <hr />
-            <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
-                <div>
-                    <div appearance="fill">
-                        <label>Title</label><br>
-                        <input matInput formControlName="name" />
-                    </div>
-                    <div appearance="fill">
-                        <label>Frequency</label><br>
-                        <select formControlName="frequency">
-                            <option value="Daily">Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                        </select>
-                    </div>
-                    <br />
-                    <div appearance="fill">
-                        <label>Description</label><br>
-                        <textarea matInput formControlName="description" placeholder="Why is this habit important to you? "></textarea>
-                    </div>
-                </div>
-                <mat-card-actions>
-                    <button  class="button2" type="submit">Save</button>
-                    <button class="button3" (click)="exitForm()">Cancel</button>
-                </mat-card-actions>
-            </form>
-        </div>
-    </mat-card> -->
+    
 </div>
 

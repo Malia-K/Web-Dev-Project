@@ -8,7 +8,9 @@
 ## About Project
 
   Task Master is a Web Application that will replace a lot of notebooks for making plans and to-do lists. Because all of them are collected in one place.
-  
+
+![plot](./Task-Master-Project/src/assets/logo-white.png)
+
   
 ## Functionalities
   1. To Do list with ability to divide them by categories

@@ -16,37 +16,68 @@
     </div>
 
     <div class= "sign-in-side">
-        <div class="form-box">
-            <h2>Sign In</h2>
+            <form [formGroup] = "signInForm" class="form-box" (ngSubmit) = "onSubmit()">
+                <h2>Sign In</h2>
+                <mat-form-field class = "input-box">
+                    
+                    <input 
+                        matInput 
+                        
+                        formControlName = "login"
+                        placeholder="Email"
+                        value="{{ username }}"
+                    />
+                    <!-- type="email"  -->
+                    <span class="icon">
+                        <img src = "/assets/email.png" alt = "user" height="25px">
+                    </span>
+                    <mat-error *ngIf="signInForm.controls.login.hasError('required')">
+                        Login is required
+                    </mat-error>
+                </mat-form-field>
 
-            <div class = "input-box">
-                <span class="icon">
-                    <img src = "/assets/email.png" alt = "user" height="25px">
-                </span>
-                <input type="email" required>
-                <label>Email</label>
-            </div>
 
-            <div class = "input-box">
-                <span class="icon">
-                    <img src = "/assets/password.png" alt = "user" height="25px">
-                </span>
-                <input type = "password"required>
-                <label>Password</label>
-            </div>
+                <mat-form-field class = "input-box">
+                    <span class="icon">
+                        <img src = "/assets/password.png" alt = "user" height="25px">
+                    </span>
+                    <input
+                        matInput 
 
+                        formControlName = "password"
+                        placeholder="Password"
+                        type="password" 
+                        
+                    />
+                    <!-- value="{{ password }}" -->
+                    <mat-error *ngIf="signInForm.controls.password.hasError('required')">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+                <button 
+                    mat-button 
+                    color = "success"
+                    type="submit" 
+                    class ="login-button" 
+                    
+                    [disabled] = "!signInForm.valid"
+                    (click) = "onSubmit()"
+                    
+                    [routerLink]="isLoggedIn ? ['/main-page'] : ['/sign-up']"
+                >
+                <!-- routerLink = "/main-page"  -->
+                
+                
+                    Log In
+                </button>
 
-            <button type="submit" class = "login-button" routerLink = "/main-page">Log In</button>
-
-            <div class="login-register">
-                <p>Don't have an account?
-                    <a href = "/sign-up" class="reister-link"> Sign up </a>
-                </p>
-            </div>
+                <div class="login-register">
+                    <p>Don't have an account?
+                        <a href = "/sign-up" class="reister-link"> Sign up </a>
+                    </p>
+                </div>
+            </form>
+            
         </div>
-
-    </div>
-
-
 </div>
 

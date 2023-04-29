@@ -10,6 +10,12 @@ export class AuthService {
 
   constructor(private client: HttpClient) { }
 
+  // getUsers():Observable<User[]>{
+  //   return this.client.get<User[]>(
+  //     `${this.BASE_URL}/api/users/`
+  //   )
+  // }
+
   signIn(username: string, password: string): Observable<AuthToken> {
     return this.client.post<AuthToken>(`${this.BASE_URL}/api/sign-in/`, {username, password});
   }
