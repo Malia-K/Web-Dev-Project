@@ -40,7 +40,7 @@
 
                 <form class="todo-input">
                     <input type = "text" class= "todo-input" placeholder="Add Todo" #inputTodo name="inputTodo">
-                    <!--  [(ngModel)] = "inputData"  -->
+                   
                     <button class = "add-todo" (click) = "addTodo(category.id, inputTodo.value); inputTodo.value = ''"> <img src = "assets/plus -black.png" height="60%"></button>  
                 </form>
 
@@ -59,24 +59,6 @@
         </div>
         
     </div>
-
-<!--    
-    <div class="add-form-container" *ngIf="adding || editing">
-        <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
-            <div>
-                <div appearance="fill">
-                    <label>Title</label><br>
-                    <input matInput formControlName="name" />
-                </div>
-
-                <br />
-            </div>
-            <mat-card-actions>
-                <button  class="button2" type="submit">Save</button>
-                <button class="button3" (click)="exitForm()">Cancel</button>
-            </mat-card-actions>
-        </form>
-    </div> -->
     
 </div>
 

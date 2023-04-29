@@ -33,7 +33,7 @@ export class ToDoComponent implements OnInit{
   }
 
 
-
+  
   addTodo(cat_id: number, inputTodo:string): void{
     console.log(cat_id)
     if(inputTodo.length != 0){

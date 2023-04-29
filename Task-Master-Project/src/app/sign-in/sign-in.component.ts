@@ -8,21 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
 
-  providers: [{ provide: MatDialogRef, useValue: {} },{ provide: MAT_DIALOG_DATA, useValue: {} }]
+  providers: []
 
 })
-export class SignInComponent {
+export class SignInComponent  {
   @Output() validLogin = new EventEmitter<{isLoggedIn: boolean, username: string, password: string}>();
 
-  isLoggedIn: boolean;
-  username: string;
-  password: string;
+  isLoggedIn: boolean = false;
+  username: string = "";
+  password: string = "";
 
-  constructor(private signInService: AuthService, public dialogRef: MatDialogRef<SignInComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.isLoggedIn = data.isLoggedIn;
-    this.username = data.username;
-    this.password = data.password;
+  constructor(private signInService: AuthService) {
   }
 
   signInForm = new FormGroup({
@@ -31,11 +27,14 @@ export class SignInComponent {
   })
 
   signIn(): void {
+    console.log(this.isLoggedIn)
     this.signInService.signIn(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.token);
       this.isLoggedIn = true;
+      console.log(this.isLoggedIn)
       this.validLogin.emit({isLoggedIn: this.isLoggedIn, username: this.username, password: this.password})
     })
+    console.log(this.isLoggedIn)
   }
 
   onSubmit(): void {
@@ -45,11 +44,8 @@ export class SignInComponent {
         this.password = this.signInForm.value.password;
         this.signIn();
       }
-      this.dialogRef.close(this.signInForm.value);
+      // this.dialogRef.close(this.signInForm.value);
     }
   }
 
-  onCancel(): void {
-    this.dialogRef.close();
-  }
 }
