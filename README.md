@@ -9,6 +9,8 @@
 
   Task Master is a Web Application that will replace a lot of notebooks for making plans and to-do lists. Because all of them are collected in one place.
   
+![logo](https://github.com/Malia-K/Web-Dev-Project/blob/main/logo.png?raw=true)
+
   
 ## Functionalities
   1. To Do list with ability to divide them by categories
