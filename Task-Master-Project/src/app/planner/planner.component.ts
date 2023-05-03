@@ -1,4 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -26,6 +27,7 @@ export class PlannerComponent {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     initialView: 'dayGridMonth',
+    events: [],
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
@@ -43,7 +45,15 @@ export class PlannerComponent {
   };
   currentEvents: EventApi[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef) {
+  constructor(private http: HttpClient, private changeDetector: ChangeDetectorRef) {
+    this.http.get<any>('http://localhost:8000/api/events/').subscribe(events => {
+      this.calendarOptions.events = events.map((event: { id: any; title: any; start_time: any; end_time: any; }) => ({
+        id: event.id,
+        title: event.title,
+        start: event.start_time,
+        end: event.end_time
+      }));
+    });
   }
 
   handleCalendarToggle() {
@@ -81,5 +91,9 @@ export class PlannerComponent {
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
+  }
+
+  eventAdd() {
+
   }
 }

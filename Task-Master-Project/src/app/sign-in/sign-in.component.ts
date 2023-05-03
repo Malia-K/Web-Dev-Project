@@ -31,7 +31,6 @@ export class SignInComponent  {
     this.signInService.signIn(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.token);
       this.isLoggedIn = true;
-      console.log(this.isLoggedIn)
       this.validLogin.emit({isLoggedIn: this.isLoggedIn, username: this.username, password: this.password})
     })
     console.log(this.isLoggedIn)
