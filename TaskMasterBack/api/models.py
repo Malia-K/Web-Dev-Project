@@ -20,3 +20,12 @@ class Event(models.Model):
             'end_time': self.end_time
         }
 
+
+class Habit(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(default='')
+    isDone = models.BooleanField(default=False)
+    likes = models.FloatField(default=0)
+
+    def __str__(self) -> str:
+        return self.name
