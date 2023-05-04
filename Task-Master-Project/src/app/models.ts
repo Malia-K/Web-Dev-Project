@@ -1,3 +1,5 @@
+
+
 export class SignUpToken {
   username: string = "";
   email: string = "";
@@ -10,6 +12,7 @@ export class SignUpToken {
 export class AuthToken {
   token: string = "";
 }
+
 
 // export class Event {
 //   id: any;
