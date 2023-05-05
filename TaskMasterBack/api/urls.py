@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+
 from .views.habit_view import *
 
 urlpatterns = [
@@ -15,7 +16,7 @@ urlpatterns = [
     path('sign-up/', UserSignUpAPIView.as_view(), name='user-sign-up'),
     path('events/', EventAPIView.as_view(), name='event'),
 
-    path('habit/', habits_list, name='habit' ),
+    path('habit/', habits_list, name='habit'),
     path('habit/<int:habit_id>', about_habit, name='habit_id'),
 
     path('events/<int:event_id>/', EventDetailView.as_view(), name='event_id'),
