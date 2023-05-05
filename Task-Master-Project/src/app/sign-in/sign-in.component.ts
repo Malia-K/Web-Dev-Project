@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog'
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -17,8 +18,9 @@ export class SignInComponent  {
   isLoggedIn: boolean = false;
   username: string = "";
   password: string = "";
+  isLoading : boolean = false;
 
-  constructor(private signInService: AuthService) {
+  constructor(private signInService: AuthService, private router : Router) {
   }
 
   signInForm = new FormGroup({
@@ -27,13 +29,29 @@ export class SignInComponent  {
   })
 
   signIn(): void {
-    console.log(this.isLoggedIn)
-    this.signInService.signIn(this.username, this.password).subscribe((data) => {
-      localStorage.setItem('token', data.token);
-      this.isLoggedIn = true;
-      this.validLogin.emit({isLoggedIn: this.isLoggedIn, username: this.username, password: this.password})
-    })
-    console.log(this.isLoggedIn)
+    this.isLoading = true
+    this.signInService.signIn(this.username, this.password).subscribe(
+      data => {
+     
+        localStorage.setItem('token', data.token);
+        this.isLoggedIn = true;
+        this.validLogin.emit({isLoggedIn: this.isLoggedIn, username: this.username, password: this.password})
+        setTimeout(() => {
+          this.router.navigateByUrl("/main-page")
+          this.isLoading = false;
+        }, 1500);
+      },
+      
+      error => {
+        this.router.navigateByUrl("/sign-in")
+        alert ("Such user does not exist. Please try again..")
+        this.isLoading = false
+      }
+      
+    
+      
+      )
+
   }
 
   onSubmit(): void {
@@ -43,7 +61,6 @@ export class SignInComponent  {
         this.password = this.signInForm.value.password;
         this.signIn();
       }
-      // this.dialogRef.close(this.signInForm.value);
     }
   }
 

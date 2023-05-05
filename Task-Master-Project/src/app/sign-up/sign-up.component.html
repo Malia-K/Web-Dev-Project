@@ -14,45 +14,107 @@
         </div>
     </div>
 
-    <div class= "sign-in-side">
+
+    <div class= "sign-in-side"  >
         <div class="form-box">
-            <h2>Sign Up</h2>
+            <form [formGroup] = "signUpForm" (ngSubmit) = "onSubmit()">
+                <h2>Sign Up</h2>
+                <mat-form-field class = "input-box">
+                    <input 
+                        matInput 
+                        formControlName="username" 
+                        placeholder="Username" 
+                    />
+                    <mat-error *ngIf="signUpForm?.get('username')?.hasError('required')">
+                      Username is required
+                    </mat-error>
+                </mat-form-field>
 
-            <div class = "input-box">
-                <span class="icon">
-                    <img src = "/assets/email.png" alt = "user" height="25px">
-                </span>
-                <input type="email" required>
-                <label>Email</label>
-            </div>
+                <mat-form-field class = "input-box">
+                    <input 
+                        matInput 
+                        formControlName="first_name" 
+                        placeholder="First Name" 
+                        [(ngModel)]="signUpForm.value.first_name" 
+                    />
+                    <mat-error *ngIf="signUpForm?.get('first_name')?.hasError('required')">
+                      First Name is required
+                    </mat-error>
+                </mat-form-field>
+              
+                <mat-form-field class = "input-box">
+                    <input 
+                        matInput 
+                        formControlName="last_name" 
+                        placeholder="Last Name" 
+                        [(ngModel)]="signUpForm.value.last_name" 
+                    />
+                    <mat-error *ngIf="signUpForm?.get('last_name')?.hasError('required')">
+                        Last Name is required
+                    </mat-error>
+                </mat-form-field>
 
-            <div class = "input-box">
-                <span class="icon">
-                    <img src = "/assets/password.png" alt = "user" height="25px">
-                </span>
-                <input type = "password"required>
-                <label>Password</label>
-            </div>
-
-            <div class = "input-box">
-                <span class="icon">
-                    <img src = "/assets/conf-pass.png" alt = "user" height="25px">
-                </span>
-                <input type = "password"required>
-                <label>Confirm Password</label>
-            </div>
+                <mat-form-field class = "input-box">
+                    <input
+                        matInput
+                        formControlName = "email"
+                        placeholder="Email"
+                        [(ngModel)]="signUpForm.value.email"
+                    />
+                    <!-- <span class="icon">
+                        <img src = "/assets/email.png" alt = "user" height="25px">
+                    </span> -->
+                    <mat-error *ngIf="signUpForm?.get('email')?.hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm?.get('email')?.hasError('email')">
+                        Invalid email address
+                      </mat-error>
+                </mat-form-field>
+    
+    
+                <mat-form-field class = "input-box">
+                    <!-- <span class="icon">
+                        <img src = "/assets/password.png" alt = "user" height="25px">
+                    </span> -->
+                    <input
+                        matInput
+                        formControlName = "password"
+                        placeholder="Password"
+                        type="password"
+                        [(ngModel)]="signUpForm.value.password"
+                        [disabled] = "false"
+                    />
+                    <mat-error *ngIf="signUpForm?.get('password')?.hasError('required')">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm?.get('password')?.hasError('minlength')">
+                        Password must be at least 6 characters long
+                      </mat-error>
+                </mat-form-field>
+    
+            </form>
+    
             
-            
-            <button type="submit" class = "login-button">Sign up</button>
+            <button
+                mat-button
+                color = "primary"
+                class ="login-button"
+                (click) = "onSubmit()"
+            >
+                Sign up
+            </button>
 
             <div class="login-register">
-                <p>Already have an account? 
+                <p>Already have an account?
                     <a href = "/sign-in" class="reister-link"> Sign in </a>
                 </p>
             </div>
+           
         </div>
-        
     </div>
+
+    
 
 
 </div>

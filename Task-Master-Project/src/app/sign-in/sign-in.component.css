@@ -127,7 +127,7 @@ from {
 
 .form-box .input-box{
     position: relative;
-    width: 65%;
+    width: 100%;
     height: 50px;
     /* border-bottom:  2px solid white; */
     margin: 30px 0;
@@ -181,7 +181,7 @@ from {
 
 
 .login-button{
-    width: 65%;
+    width: 71%;
     height: 45px;
     background-color:white;
     border: none;
@@ -192,11 +192,17 @@ from {
     font-weight: 500;
     box-shadow: 0 0 10px rgba(228, 228, 228, 0.5);
     margin-bottom: 20px;
-}
-
-.mat-button.mat-success {
     color: black;
 }
+.mat-mdc-button:not(:disabled){
+    color: black;
+}
+
+.mat-mdc-button:disabled{
+    color: black;
+    cursor: pointer;
+} 
+
 
 
 .login-register a{
@@ -209,6 +215,19 @@ from {
     text-decoration: underline;
 }
 
+
+
+.content-loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(51,51,51,0.8)
+}
 
 
 

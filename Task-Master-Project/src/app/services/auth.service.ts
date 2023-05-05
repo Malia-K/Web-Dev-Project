@@ -19,9 +19,14 @@ export class AuthService {
   signIn(username: string, password: string): Observable<AuthToken> {
     return this.client.post<AuthToken>(`${this.BASE_URL}/api/sign-in/`, {username, password});
   }
-  signUp(username: string, email: string, password: string, firstName: string, lastName: string):
-    Observable<SignUpToken> {
-    return this.client.post<SignUpToken>(`${this.BASE_URL}/api/sign-up/`, {username, email, password, firstName, lastName});
+  signUp(username: string, email: string, password: string, first_name: string, last_name: string):Observable<SignUpToken> {
+    
+    console.log(username)
+    console.log(email)
+    console.log(first_name)
+    console.log(last_name)
+    console.log(password)
+    return this.client.post<SignUpToken>(`${this.BASE_URL}/api/sign-up/`, {username, email, first_name, last_name, password});
   }
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');

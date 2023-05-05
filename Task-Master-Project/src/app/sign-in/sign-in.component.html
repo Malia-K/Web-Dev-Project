@@ -15,16 +15,16 @@
         </div>
     </div>
 
-    <div class= "sign-in-side">
-            <form [formGroup] = "signInForm" class="form-box" (ngSubmit) = "onSubmit()">
+    <div class= "sign-in-side"  >
+        <div class="form-box">
+            <form [formGroup] = "signInForm" (ngSubmit) = "onSubmit()">
                 <h2>Sign In</h2>
                 <mat-form-field class = "input-box">
-
+    
                     <input
                         matInput
-
                         formControlName = "login"
-                        placeholder="Email"
+                        placeholder="Username"
                         value="{{ username }}"
                     />
                     <!-- type="email"  -->
@@ -35,49 +35,50 @@
                         Login is required
                     </mat-error>
                 </mat-form-field>
-
-
+    
+    
                 <mat-form-field class = "input-box">
                     <span class="icon">
                         <img src = "/assets/password.png" alt = "user" height="25px">
                     </span>
                     <input
                         matInput
-
                         formControlName = "password"
                         placeholder="Password"
                         type="password"
-
+    
                     />
                     <!-- value="{{ password }}" -->
                     <mat-error *ngIf="signInForm.controls.password.hasError('required')">
                         Password is required
                     </mat-error>
                 </mat-form-field>
-                <button
-                    mat-button
-                    color = "success"
-                    type="submit"
-                    class ="login-button"
-
-                    [disabled] = "!signInForm.valid"
-                    (click) = "onSubmit()"
-
-                    routerLink="{{isLoggedIn == true ? '/main-page' : '/sign-in'}}"
-                >
-                <!-- routerLink = "/main-page"  -->
-
-
-                    Log In
-                </button>
-
-                <div class="login-register">
-                    <p>Don't have an account?
-                        <a href = "/sign-up" class="reister-link"> Sign up </a>
-                    </p>
-                </div>
+    
             </form>
+    
+            
+            <button
+                mat-button
+                color = "primary"
+                class ="login-button"
+                [disabled] = "!signInForm.valid"
+                (click) = "onSubmit()"
+            >
+                Log In
+            </button>
 
+            <div class="login-register">
+                <p>Don't have an account?
+                    <a href = "/sign-up" class="reister-link"> Sign up </a>
+                </p>
+            </div>
+           
         </div>
+    </div>
+</div>
+
+
+<div class="content-loading" *ngIf = "isLoading">
+    <img src = "assets/loading.gif" width="8%">
 </div>
 
