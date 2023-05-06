@@ -13,32 +13,39 @@ import { HabitService } from '../services/habit.service';
 
 
 export class HabitTrackerComponent implements OnInit{
+
   // title(title: any) {
   //   throw new Error('Method not implemented.');
-  // }
+  // } 
+
+  habits: Habit[] = [];
+
   public adding = false;
 
   public editing = false;
   public editingIndex!: number;
-  habits: Habit[] = [
-    <Habit>{
-      name: '15 Minute Walk',
-      frequency: 'Daily',
-      isDone: false,
-      description:
-        'This habit makes my kitchen look nice and makes my day better the next morning.',
-      likes: 0,
-    },
-    <Habit>{
-      name: 'Weed the Garden',
-      frequency: 'Weekly',
-      isDone: false,
-      description:
-        'The weeds get so out of hand if they wait any longer, and I like how nice our home looks with a clean lawn.',
-      likes: 0,
-    },
-  ];
+ 
+  // = [
+    
+  //   // <Habit>{
+  //   //   name: '15 Minute Walk',
+  //   //   frequency: 'Daily',
+  //   //   isDone: false,
+  //   //   description:
+  //   //     'This habit makes my kitchen look nice and makes my day better the next morning.',
+  //   //   likes: 0,
+  //   // },
+  //   // <Habit>{
+  //   //   name: 'Weed the Garden',
+  //   //   frequency: 'Weekly',
+  //   //   isDone: false,
+  //   //   description:
+  //   //     'The weeds get so out of hand if they wait any longer, and I like how nice our home looks with a clean lawn.',
+  //   //   likes: 0,
+  //   // },
+  // ];
   constructor(private habitsService: HabitService){}
+
   ngOnInit(): void {
     this.habitsService.getHabits().subscribe((data)=>{
       this.habits = data;
