@@ -91,6 +91,13 @@ p{
     margin-top: 20%;
 }
 
+.logout{
+    border: none;
+    background-color: transparent;
+    display: flex;
+    cursor: pointer;
+}
 
+  
   
 
