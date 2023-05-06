@@ -17,9 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToDoComponent } from './to-do/to-do.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import {AuthInterceptor} from "./services/AuthInterceptor";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,11 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   exports : [PlannerComponent]
 })

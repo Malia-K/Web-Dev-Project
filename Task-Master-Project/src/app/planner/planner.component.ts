@@ -52,6 +52,7 @@ export class PlannerComponent {
     eventRemove: this.handleEventRemove.bind(this),
   };
   currentEvents: EventApi[] = [];
+  TODAY_STR = new Date().toISOString().replace(/T.*$/, '');
 
   constructor(private plannerService: PlannerService, private http: HttpClient, private changeDetector: ChangeDetectorRef) {
     plannerService.getEvents().subscribe(events => {

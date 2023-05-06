@@ -3,6 +3,7 @@
         <div class="user-info">
             <img class="user-photo" src="https://i.pravatar.cc/75" />
             <p class="user-name"> Username </p>
+          <button class="logout" (click)="logout()">LogOut</button>
         </div>
 
         <div class = "workspace">
@@ -28,7 +29,7 @@
         <div *ngSwitchDefault>
             <app-to-do></app-to-do>
         </div>
-        
+
     </div>
 
 </div>

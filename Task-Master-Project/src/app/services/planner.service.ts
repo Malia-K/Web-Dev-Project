@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
 export class PlannerService {
   BASE_URL = "http://localhost:8000"
   constructor(private http: HttpClient) { }
-
   getEvents(): Observable<any[]> {
     return this.http.get<any[]>(`${this.BASE_URL}/api/events/`);
 
@@ -17,8 +16,8 @@ export class PlannerService {
   addEvent(event: EventInput) {
     let id = event.id;
     let title = event.title;
-    let start_time = event.start;
-    let end_time = event.end;
+    let start_time = event.start + 'T00:00:00';
+    let end_time = event.end + 'T03:00:00';
     return this.http.post(`${this.BASE_URL}/api/events/`, {id, title, start_time, end_time});
   }
 
