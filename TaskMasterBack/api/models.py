@@ -22,10 +22,18 @@ class Event(models.Model):
 
 
 class Habit(models.Model):
+
+    frequency_choices = [
+        ('D', 'Daily'),
+        ('W', 'Weekly'),
+        ('M', 'Mounthly'),
+    ]
     name = models.CharField(max_length=255)
     description = models.TextField(default='')
+    frequency = models.CharField(max_length=1, choices=frequency_choices, default=[('D', 'Daily')])
     isDone = models.BooleanField(default=False)
     likes = models.FloatField(default=0)
+    user_id = models.ForeignKey
 
     def __str__(self) -> str:
         return self.name
