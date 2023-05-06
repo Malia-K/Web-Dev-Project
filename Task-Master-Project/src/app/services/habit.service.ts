@@ -13,9 +13,24 @@ export class HabitService {
 
   constructor(private client: HttpClient) { }
 
-  getHabits():Observable<Habit[]> {
+  getHabits(user_id : number):Observable<Habit[]> {
     return this.client.get<Habit[]>(
-      `${this.BASE_URL}/api/habits`
+      `${this.BASE_URL}/api/${user_id}/habit`
     )
   }
+
+  createHabit(name:string,frequency:string, description:string, user_id: number):Observable<Habit>{
+    return this.client.post<Habit>(`${this.BASE_URL}/api/${user_id}/habit`,
+      {
+        name: name,
+        frequency:frequency,
+        isDone: false,
+        description : description,
+        user: user_id,
+        likes: 0
+      }
+    )
+  }
+
+
 }

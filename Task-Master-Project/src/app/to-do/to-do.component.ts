@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, Todo } from './models/models';
+import { Category, Task } from './models/models';
 import { ToDoService } from '../services/to-do.service';
 import { User } from '../models';
 import jwtDecode from 'jwt-decode';
@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode';
 })
 export class ToDoComponent implements OnInit{
   categories: Category[] = [];
-  todos: Todo[] = [];
+  todos: Task[] = [];
   user: User | undefined;
 
 
@@ -40,8 +40,12 @@ export class ToDoComponent implements OnInit{
 
 
 
-    this.todoService.getCategories().subscribe((data)=>
+    this.todoService.getCategories(6).subscribe((data)=>
       this.categories = data
+    )
+
+    this.todoService.getTasks(6).subscribe((data)=>
+      this.todos = data
     )
 
 
@@ -56,28 +60,37 @@ export class ToDoComponent implements OnInit{
   saveCategory(inputCategory : string){
     // console.log(cat_id)
     if(inputCategory.length != 0){
-      // const cat = new Category(this.categories.length + 1, inputCategory)
+      // const cat = new Category(this.categories.length + 1, inputCategory, 6)
       // this.categories.push(cat)
 
       // console.log(this.categories)
-      // this.todoService.createCategory(inputCategory, )
+      this.todoService.createCategory(inputCategory, 6).subscribe((category:Category)=>
+        {
+          this.categories.push(category)
+        }
+      )
       this.adding = false
 
     }
   }
-  
 
+  deleteCategory(catID : number){
+    // const selectedCategory = this.getCategoryById(catID)
+    this.todoService.deleteCategory(catID, 6).subscribe((data) => {
+      this.categories= this.categories.filter((Category) => Category.id !== catID);
+    });
+  }
   
-
 
   
   addTodo(cat_id: number, inputTodo:string): void{
-    console.log(cat_id)
+    // console.log(cat_id)
     if(inputTodo.length != 0){
-      const todo = new Todo(this.todos.length + 1, inputTodo, false, cat_id)
-      this.todos.push(todo)
-
-      console.log(this.todos)
+      this.todoService.createTask(inputTodo, 6, cat_id).subscribe((task:Task) =>
+        {
+          this.todos.push(task)
+        }
+      )
       inputTodo = ""
       // inputData = ""
     }
@@ -85,23 +98,21 @@ export class ToDoComponent implements OnInit{
   }
 
 
-
-
   completeTodo(todoID: number){
-    let completedTodo = this.getTodoById(todoID)
-
-    completedTodo.completed = true
+    this.todoService.deleteTask(todoID, 6).subscribe((data) => {
+      this.todos= this.todos.filter((Task) => Task.id !== todoID);
+    });
 
   }
 
-  getTodoById(todoID:number):Todo{
-    for(let todo of this.todos){
-      if(todo.id == todoID){
-        return todo
-      }
-    }
-    return {} as Todo
-  }
+  // getTodoById(todoID:number):Todo{
+  //   for(let todo of this.todos){
+  //     if(todo.id == todoID){
+  //       return todo
+  //     }
+  //   }
+  //   return {} as Todo
+  // }
 
 
   getCategoryById(catID:number):Category{
@@ -114,41 +125,12 @@ export class ToDoComponent implements OnInit{
   }
 
 
-  updateTodo(todoID: number){
-  
-  }
 
-
-  deleteCategory(catID : number){
-    // const selectedCategory = this.getCategoryById(catID)
-    this.categories.forEach((value, id)=>{
-      if(value.id == catID){
-        this.categories.splice(id, 1);
-      }}
-    );
-  }
 
   exitForm() {
     this.adding = false;
     // this.editing = false;
   }
-
-  //  onSubmit() {
-  //   // const habit = this.habitForm.value as Habit;
-
-  //   // if (this.editing) {
-  //   //   this.habits.splice(this.editingIndex, 1, habit);
-  //   //   this.habitForm.reset();
-  //   // } else {
-  //   //   this.habits.push(habit);
-  //   //   this.habitForm.reset();
-  //   // }
-
-  //   this.editing = false;
-  //   this.adding = false;
-  // }
-
-
 
 
 

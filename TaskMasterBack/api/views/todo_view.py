@@ -18,26 +18,26 @@ def get_category(category_id):
 
 
 class CategoryAPIView(APIView):
-    def get(self, request):
-        categories = Category.objects.filter(user=self.request.user)
+    def get(self, request, user_id):
+        categories = Category.objects.filter(user=user_id)
         serializer = TodoCatSerializer(categories, many=True)
         return JsonResponse(serializer.data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 2},
                             status=200)
 
-    def post(self, request):
+    def post(self, request, user_id):
         serializer = TodoCatSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(user=self.request.user)
+        serializer.save()
         return JsonResponse(serializer.data)
 
 
 class CategoryDetailView(APIView):
-    def get(self, request, category_id):
+    def get(self, request,user_id, category_id):
         category = get_category(category_id)
         serializer = TodoCatSerializer(category)
         return Response(serializer.data)
 
-    def put(self, request, category_id):
+    def put(self, request, user_id, category_id):
         category = get_category(category_id)
         serializer = TodoCatSerializer(category, request.data)
         if serializer.is_valid():
@@ -45,7 +45,7 @@ class CategoryDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, category_id):
+    def delete(self, request, user_id, category_id):
         category = get_category(category_id)
         category.delete()
         return Response({'deleted': True})
@@ -56,22 +56,30 @@ class CategoryDetailView(APIView):
 
 
 @api_view(['GET', 'POST', 'DELETE'])
-def task_list(request):
+def task_list(request, user_id):
     if request.method == 'GET':
-        tasks = Task.objects.filter(user=request.user)
+        tasks = Task.objects.filter(category__user_id=user_id)
         serializer = TodoTaskSerializer(tasks, many=True)
         return Response(serializer.data, status=200)
 
     elif request.method == 'POST':
         serializer = TodoTaskSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+            serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
 
+def get_tasks_by_category(request, user_id, category_id):
+    if request.method == 'GET':
+        tasks = Task.objects.all().filter(category_id=category_id )
+        serializer = TodoTaskSerializer(tasks, many=True)
+
+        return JsonResponse(serializer.data, safe=False)
+
+
 @api_view(['GET', 'PUT', 'DELETE'])
-def task_detail(request, task_id):
+def task_detail(request, task_id, user_id):
     try:
         task = Task.objects.get(id=task_id)
     except Task.DoesNotExist as err:

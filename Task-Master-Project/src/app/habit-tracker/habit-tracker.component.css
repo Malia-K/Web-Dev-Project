@@ -1,5 +1,5 @@
 
-.toolbar h1 {
+.toolbar{
     margin-top: -150px;
     /* margin-left: 20px; */
     position: absolute;
@@ -18,7 +18,7 @@
 .all-habits {
     text-align: center;
     /* position: absolute; */
-    margin-top: 180px;
+    margin-top: 80px;
 }
 
 .all-habits h1 {
@@ -30,7 +30,7 @@
 }
 
 .all-habits mat-card {
-    width: 80%;
+    width: 65vw;
     margin: 1em auto;
     text-align: left;
     

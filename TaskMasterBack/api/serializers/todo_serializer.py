@@ -9,7 +9,7 @@ class TodoCatSerializer(serializers.Serializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     def create(self, validated_data):
-        return Category.objects.create(user=self.context['request'].user, **validated_data)
+        return Category.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         instance.id = instance.id

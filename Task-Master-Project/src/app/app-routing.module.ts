@@ -9,7 +9,7 @@ import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
 const routes: Routes = [
   {path: "sign-in", component: SignInComponent},
   {path: "sign-up", component: SignUpComponent},
-  {path: "main-page", component: MainPageComponent},
+  {path: ":id/main-page", component: MainPageComponent},
   // {path: "main-page/to-do", component: MainPageComponent},
   // {path: "main-page/planner", component: PlannerComponent},
   // {path: "main-page/habit-tracker", component:HabitTrackerComponent},

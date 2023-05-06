@@ -41,12 +41,12 @@ class Category(models.Model):
 
 
 class Task(models.Model):
-    description: models.CharField(max_length=255)
+    description = models.CharField(max_length=255, default="")
     completed = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.description
 
 
 

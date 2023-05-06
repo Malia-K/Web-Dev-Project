@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/materia
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from '../models';
+import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -20,6 +22,8 @@ export class SignInComponent  {
   password: string = "";
   isLoading : boolean = false;
 
+  user: User = { id: 0, username: '', email: '', first_name: '', last_name: '' };
+
   constructor(private signInService: AuthService, private router : Router) {
   }
 
@@ -35,11 +39,34 @@ export class SignInComponent  {
      
         localStorage.setItem('token', data.token);
         this.isLoggedIn = true;
+        
+        const token = localStorage.getItem('token');
+        console.log(token)
+        if (token) {
+          const decodedToken:User= jwtDecode(data.token);
+          console.log(decodedToken)
+          this.user = {
+            id: decodedToken.id,
+            username: decodedToken.username,
+            email: decodedToken.email,
+            first_name : decodedToken.first_name,
+            last_name:decodedToken.last_name
+          };
+
+          
+        }
+
+        // this.user = this.signInService.getUser()
+
         this.validLogin.emit({isLoggedIn: this.isLoggedIn, username: this.username, password: this.password})
+        
         setTimeout(() => {
-          this.router.navigateByUrl("/main-page")
+          
+          this.router.navigateByUrl(`${this.user.id}/main-page`)
           this.isLoading = false;
         }, 1500);
+
+        
       },
       
       error => {

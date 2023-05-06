@@ -12,9 +12,9 @@ from rest_framework.decorators import api_view
 
 
 @api_view(['GET', 'POST', 'DELETE'])
-def habits_list(request):
+def habits_list(request, user_id):
     if request.method == 'GET':
-        habits = Habit.objects.all()
+        habits = Habit.objects.filter(user_id = user_id)
         serializer = HabitSerializer(habits, many=True)
         return Response(serializer.data, status=200)
 

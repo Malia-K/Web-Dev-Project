@@ -21,26 +21,26 @@ export class HabitTrackerComponent implements OnInit{
   public editing = false;
   public editingIndex!: number;
   habits: Habit[] = [
-    <Habit>{
-      name: '15 Minute Walk',
-      frequency: 'Daily',
-      isDone: false,
-      description:
-        'This habit makes my kitchen look nice and makes my day better the next morning.',
-      likes: 0,
-    },
-    <Habit>{
-      name: 'Weed the Garden',
-      frequency: 'Weekly',
-      isDone: false,
-      description:
-        'The weeds get so out of hand if they wait any longer, and I like how nice our home looks with a clean lawn.',
-      likes: 0,
-    },
+    // <Habit>{
+    //   name: '15 Minute Walk',
+    //   frequency: 'Daily',
+    //   isDone: false,
+    //   description:
+    //     'This habit makes my kitchen look nice and makes my day better the next morning.',
+    //   likes: 0,
+    // },
+    // <Habit>{
+    //   name: 'Weed the Garden',
+    //   frequency: 'Weekly',
+    //   isDone: false,
+    //   description:
+    //     'The weeds get so out of hand if they wait any longer, and I like how nice our home looks with a clean lawn.',
+    //   likes: 0,
+    // },
   ];
   constructor(private habitsService: HabitService){}
   ngOnInit(): void {
-    this.habitsService.getHabits().subscribe((data)=>{
+    this.habitsService.getHabits(6).subscribe((data)=>{
       this.habits = data;
     })
     console.log(this.habits)
@@ -62,8 +62,12 @@ export class HabitTrackerComponent implements OnInit{
       this.habits.splice(this.editingIndex, 1, habit);
       this.habitForm.reset();
     } else {
-      this.habits.push(habit);
-      this.habitForm.reset();
+      this.habitsService.createHabit(habit.name, habit.frequency, habit.description, 6).subscribe((habit:Habit) =>
+      {
+        this.habits.push(habit);
+        this.habitForm.reset();
+      })
+      
     }
 
     this.editing = false;

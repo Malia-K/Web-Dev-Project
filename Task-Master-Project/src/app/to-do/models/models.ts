@@ -10,7 +10,7 @@ export class Category{
     }
 }
 
-export class Todo{
+export class Task{
     constructor(
         public id: number,
         public description: string,

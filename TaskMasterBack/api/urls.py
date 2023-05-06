@@ -17,15 +17,15 @@ urlpatterns = [
     path('sign-up/', UserSignUpAPIView.as_view(), name='user-sign-up'),
     path('events/', EventAPIView.as_view(), name='event'),
 
-    path('habit/', habits_list, name='habit'),
-    path('habit/<int:habit_id>', about_habit, name='habit_id'),
+    path('<int:user_id>/habit/', habits_list, name='habit'),
+    path('/<int:user_id>/habit/<int:habit_id>', about_habit, name='habit_id'),
 
     path('events/<int:event_id>/', EventDetailView.as_view(), name='event_id'),
 
-    path('categories/', CategoryAPIView.as_view(), name='category'),
-    path('categories/<int:category_id>', CategoryDetailView.as_view(), name='category_id'),
-
-    path('tasks/', task_list, name='task'),
-    path('tasks/<int:task_id>', task_detail, name='task_id'),
+    path('<int:user_id>/categories/', CategoryAPIView.as_view(), name='category'),
+    path('<int:user_id>/categories/<int:category_id>', CategoryDetailView.as_view(), name='category_id'),
+    path('<int:user_id>/categories/<int:category_id>/tasks', get_tasks_by_category, name="category_id"),
+    path('<int:user_id>/tasks/', task_list, name='task'),
+    path('<int:user_id>/tasks/<int:task_id>', task_detail, name='task_id'),
 
 ]
