@@ -14,6 +14,17 @@ export class AuthToken {
 }
 
 
+export interface User{
+  id:number;
+  username:string;
+  email: string;
+  first_name:string;
+  last_name:string;
+
+}
+
+
+
 // export class Event {
 //   id: any;
 //   title: any;

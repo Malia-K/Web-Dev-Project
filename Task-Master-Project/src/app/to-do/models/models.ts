@@ -2,7 +2,12 @@ export class Category{
     constructor(
         public id: number,
         public title: string,
-        ){}
+        public user : any
+    ){
+        this.id = id;
+        this.title = title;
+        this.user = user;
+    }
 }
 
 export class Todo{

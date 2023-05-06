@@ -26,7 +26,7 @@ class Habit(models.Model):
     description = models.TextField(default='')
     isDone = models.BooleanField(default=False)
     likes = models.FloatField(default=0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self) -> str:
         return self.name
@@ -47,7 +47,6 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 

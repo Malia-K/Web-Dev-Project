@@ -12,6 +12,7 @@ class TodoCatSerializer(serializers.Serializer):
         return Category.objects.create(user=self.context['request'].user, **validated_data)
 
     def update(self, instance, validated_data):
+        instance.id = instance.id
         instance.title = validated_data.get('title', instance.title)
         instance.save()
         return instance
@@ -20,4 +21,4 @@ class TodoCatSerializer(serializers.Serializer):
 class TodoTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ('id', 'description', 'completed', 'category')
