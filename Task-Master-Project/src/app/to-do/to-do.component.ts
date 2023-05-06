@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, Todo } from './models/models';
+import { ToDoService } from '../services/to-do.service';
+import { User } from '../models';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-to-do',
@@ -7,12 +10,11 @@ import { Category, Todo } from './models/models';
   styleUrls: ['./to-do.component.css']
 })
 export class ToDoComponent implements OnInit{
-  categories: Category[] = [
-    // {id: 1, title: "Webka"}, {id:2, title: "baska sabak"}, {id: 3, title:"3 category"},{id: 4, title:"4 category"}  
-  ];
-  todos: Todo[] = [
-    
-  ];
+  categories: Category[] = [];
+  todos: Todo[] = [];
+  user: User | undefined;
+
+
 
 
   inputTodo : string = ""
@@ -22,15 +24,50 @@ export class ToDoComponent implements OnInit{
   public editing = false;
 
 
+  constructor(private todoService:ToDoService){}
 
   
 
   ngOnInit(): void {
-    // this.todos = [{id:1, description:"something to dokfhnvkush fvhsfkvhkhvkjhfvkhvkhh   webka", completed:false, category:2},
-    // {id:2, description:"something to dokfhnvkushfvhsfkv hkhvkjhfvkhvkhh   webka", completed:false, category:4},
-    // {id:4, description:"something to dokfhnvkushfvhsfkvh khvkjhfvkhvkhh   webka", completed:false, category:2},
-    // {id:3, description:"something to do 3 cat", completed:false, category:3},]
+    // const token = localStorage.getItem('auth_token');
+    // if(token){
+    //   const decodedToken = jwtDecode(token)
+    //   // this.user = {
+    //   //   id: decodedToken.user_id,
+    //   //   username : decodedToken.username
+    //   // }
+    // }
+
+
+
+    this.todoService.getCategories().subscribe((data)=>
+      this.categories = data
+    )
+
+
   }
+
+
+  addCategory(){
+    this.adding = true
+  }
+    
+
+  saveCategory(inputCategory : string){
+    // console.log(cat_id)
+    if(inputCategory.length != 0){
+      // const cat = new Category(this.categories.length + 1, inputCategory)
+      // this.categories.push(cat)
+
+      // console.log(this.categories)
+      // this.todoService.createCategory(inputCategory, )
+      this.adding = false
+
+    }
+  }
+  
+
+  
 
 
   
@@ -46,6 +83,9 @@ export class ToDoComponent implements OnInit{
     }
 
   }
+
+
+
 
   completeTodo(todoID: number){
     let completedTodo = this.getTodoById(todoID)
@@ -108,23 +148,7 @@ export class ToDoComponent implements OnInit{
   //   this.adding = false;
   // }
 
-  addCategory(){
-    this.adding = true
-  }
-    
 
-  saveCategory(inputCategory : string){
-    // console.log(cat_id)
-    if(inputCategory.length != 0){
-      const cat = new Category(this.categories.length + 1, inputCategory)
-      this.categories.push(cat)
-
-      console.log(this.categories)
-      this.adding = false
-
-    }
-  }
-  
 
 
 

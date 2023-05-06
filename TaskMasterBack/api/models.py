@@ -33,7 +33,29 @@ class Habit(models.Model):
     frequency = models.CharField(max_length=1, choices=frequency_choices, default=[('D', 'Daily')])
     isDone = models.BooleanField(default=False)
     likes = models.FloatField(default=0)
-    user_id = models.ForeignKey
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+
 
     def __str__(self) -> str:
         return self.name
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+
+class Task(models.Model):
+    description: models.CharField(max_length=255)
+    completed = models.BooleanField(default=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+
+
+
